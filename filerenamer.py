@@ -7,8 +7,12 @@ files = []
 
 while len(files) == 0:
     path = input("\nWhich directory do you want to work in? ")
+    try:
+        os.chdir(path)
+    except:
+        print("\nNo such directory has been found!")
+        continue
     search = input("\nWhich string do you want to replace? ")
-    os.chdir(path)
     all_files = os.listdir()
     files = [file for file in all_files if os.path.isfile(file) and search in file]
     if len(files) == 0:
