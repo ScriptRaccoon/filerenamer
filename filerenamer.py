@@ -1,8 +1,7 @@
 import os
-from termcolor import cprint
 
 title = "----------------\n  FILE RENAMER  \n----------------"
-cprint(title, "cyan")
+print(title)
 
 files = []
 
@@ -13,10 +12,10 @@ while len(files) == 0:
     all_files = os.listdir()
     files = [file for file in all_files if os.path.isfile(file) and search in file]
     if len(files) == 0:
-        cprint("\nNo such files have been found!", "red")
+        print("\nNo such files have been found!")
 
 print("\nFound the following files:")
-cprint(", ".join(files), "yellow")
+print(", ".join(files))
 
 target = input(f'\nWhich string should "{search}" become? ')
 
@@ -27,7 +26,7 @@ for file in files:
         os.rename(file, new_name)
         new_names.append(new_name)
     except:
-        cprint(f'\nCould not find "{file}" anymore.', "red")
+        print(f'\nCould not find "{file}" anymore.')
 
 print("\nThe new names are:")
-cprint(", ".join(new_names), "green")
+print(", ".join(new_names))
