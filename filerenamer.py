@@ -12,7 +12,9 @@ while len(files) == 0:
     except:
         print("\nNo such directory has been found!")
         continue
-    search = input("\nWhich string do you want to replace? ")
+    search = ""
+    while len(search) == 0:
+        search = input("\nWhich string do you want to replace? ")
     all_files = os.listdir()
     files = [file for file in all_files if os.path.isfile(file) and search in file]
     if len(files) == 0:
