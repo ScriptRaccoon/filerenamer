@@ -20,22 +20,24 @@ while len(files) == 0:
     except:
         print("\nNo such directory has been found!")
         continue
-    search = ""
-    while len(search) == 0:
-        search = input("\nWhich string do you want to replace? ")
+    to_replace = ""
+    while len(to_replace) == 0:
+        to_replace = input("\nWhich string do you want to replace? ")
     all_files = os.listdir()
-    files = [file for file in all_files if os.path.isfile(file) and search in file]
+    files = [file for file in all_files if os.path.isfile(file) and to_replace in file]
     if len(files) == 0:
         print("\nNo such files have been found!")
 
 print("\nFound the following files:")
 print(", ".join(files))
 
-target = input(f'\nWhich string should "{search}" become? ')
+replace_with = input(f'\nWhich string should "{to_replace}" become? ')
 
 new_names = []
+
 for file in files:
-    new_name = file.replace(search, target)
+    new_name = file.replace(to_replace, replace_with)
+
     try:
         os.rename(file, new_name)
         new_names.append(new_name)
